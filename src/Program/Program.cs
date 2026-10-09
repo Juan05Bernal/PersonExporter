@@ -32,21 +32,33 @@ namespace Ucu.Poo.PersonExporter
             Console.WriteLine("Seleccione el formato de reporte:");
             Console.WriteLine("1 - HTML");
             Console.WriteLine("2 - PDF");
+            Console.WriteLine("3 - Markdown");
+            Console.WriteLine("4 - CSV");
             Console.Write("Opción: ");
 
             string option = Console.ReadLine();
-            string format;
+            IExporter format;
             string outputPath;
 
             if (option == "1")
             {
-                format = "HTML";
+                format = new HTML();
                 outputPath = "persons-report.html";
             }
             else if (option == "2")
             {
-                format = "PDF";
+                format = new PDF();
                 outputPath = "persons-report.pdf";
+            }
+            else if (option == "3")
+            {
+                format = new MARKDOWN();
+                outputPath = "persons-report.md";
+            }
+            else if (option == "4")
+            {
+                format = new CSV();
+                outputPath = "persons-report.csv";
             }
             else
             {
